@@ -20,12 +20,12 @@ def parse_matchAnnot(fq_filename, filename):
     f = open(filename + '.parsed.txt', 'w')
     f.write("pbid\tpbgene\trefisoform\trefgene\tscore\n")
     for pbid in pbids:
-        if pbid not in match: f.write("{0}\t{1}\tNA\tNA\tNA\n".format(pbid, pbid.split('.')[1]))
+        if pbid not in match: f.write("{0}\t{1}\tNA\tNA\tNA\n".format(pbid, pbid.split('.')[0]))
         else:
             gene, isoform, score = match[pbid]
-            if gene is None: f.write("{0}\t{1}\tNA\tNA\tNA\n".format(pbid, pbid.split('.')[1]))
+            if gene is None: f.write("{0}\t{1}\tNA\tNA\tNA\n".format(pbid, pbid.split('.')[0]))
             else:
-                f.write("{0}\t{1}\t{2}\t{3}\t{4}\n".format(pbid, pbid.split('.')[1], isoform, gene, score))
+                f.write("{0}\t{1}\t{2}\t{3}\t{4}\n".format(pbid, pbid.split('.')[0], isoform, gene, score))
     f.close()
     print >> sys.stderr, "Output written to:", f.name
 
