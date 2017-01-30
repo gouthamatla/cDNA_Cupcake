@@ -4,7 +4,7 @@ from collections import defaultdict
 from Bio import SeqIO
 
 def parse_matchAnnot(fq_filename, filename):
-    pbids = [r.id.split('|')[0] for r in SeqIO.parse(open(fq_filename), 'fastq')]
+    pbids = [r.id.split('|')[0] for r in SeqIO.parse(open(fq_filename), 'fasta')]
     match = defaultdict(lambda: (None,None,0)) # ex: PB.1.1 -> (NOC2L, NOC2L-001, 5)
 
     for line in open(filename):
